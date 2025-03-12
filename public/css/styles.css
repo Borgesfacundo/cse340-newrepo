@@ -20,6 +20,16 @@
   position: absolute;
   right: 0;
   top: .5rem;
+  padding-right: .5rem;
+}
+
+#tools a {
+  text-decoration: none;
+  color: #333;
+}
+
+#top-header {
+  padding-bottom: 1rem;
 }
 
 nav {
@@ -34,4 +44,9 @@ ul {
   padding: 0;
   display: flex;
   justify-content: space-around;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
 }
