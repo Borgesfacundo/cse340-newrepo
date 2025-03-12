@@ -1,6 +1,18 @@
 @media only screen and (min-width: 500px) {
-  #tools {
-    top: 1.5rem;
+  body {
+    margin: 1rem 4rem;
+    background-color: #fff;
+    z-index: 500;
+    border: 2px solid rgb(5, 194, 252);
+    border-radius: 9px;
+  }
+
+  .background-img {
+    width: 0;
+    height: auto;
+    z-index: -500;
+    padding: 0;
+    margin: 0;
   }
 
   .vehicle-info {

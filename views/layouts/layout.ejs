@@ -3,6 +3,18 @@
   <%- include('../partials/head') %>
 
   <body>
+    <picture>
+      <source
+        srcset="/images/site/small_check.jpg"
+        media="(max-width: 500px)"
+      />
+      <img
+        class="background-img"
+        src="/images/site/checkerboard.jpg"
+        alt="Background Image"
+      />
+    </picture>
+
     <div id="wrapper">
       <%- include('../partials/header') %> <%- include('../partials/navigation')
       %>
