@@ -4,3 +4,34 @@
 *:after {
   box-sizing: border-box;
 }
+
+.siteName {
+  font-size: 2em;
+  font-weight: bold;
+  color: #333;
+}
+
+.siteName a {
+  text-decoration: none;
+  color: #333;
+}
+
+#tools {
+  position: absolute;
+  right: 0;
+  top: .5rem;
+}
+
+nav {
+  background-color: #000;
+  color: #fff;
+  padding: 1rem;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
