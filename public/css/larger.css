@@ -1,7 +1,6 @@
 @media only screen and (min-width: 500px) {
   body {
     margin: 1rem 4rem;
-    background-color: #fff;
     z-index: 500;
     border: 2px solid rgb(5, 194, 252);
     border-radius: 9px;
@@ -20,15 +19,18 @@
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     padding: 2rem;
+    width: 100%;
   }
 
   .reviews {
     grid-column: 2/3;
     grid-row: 1/2;
+    justify-items: center;
   }
 
   .upgrades {
     grid-column: 1/2;
     grid-row: 1/2;
+    justify-items: center;
   }
 }

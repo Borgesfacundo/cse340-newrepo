@@ -131,3 +131,7 @@ nav {
   height: 6rem;
   padding: 1rem;
 }
+
+.background-img {
+  display: none;
+}
