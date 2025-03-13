@@ -1,9 +1,14 @@
 @media only screen and (min-width: 630px) {
   body {
-    margin: 1rem 4rem;
-    z-index: 500;
+    background-image: url("/images/site/small_check.jpg");
+  }
+
+  #wrapper {
     border: 2px solid rgb(5, 194, 252);
+    margin: 1rem 4rem;
     border-radius: 9px;
+    z-index: 500;
+    background-color: #fff;
   }
 
   .vehicle-info {
