@@ -55,6 +55,44 @@ Util.buildClassificationGrid = async function (data) {
 };
 
 /* ***********************
+ * Build the single item view HTML
+ ************************** */
+Util.buildItemView = async function (data) {
+  let item = '<div id="item-display">';
+  item +=
+    '<img src="' +
+    data.inv_thumbnail +
+    '" alt="Image of ' +
+    data.inv_make +
+    " " +
+    data.inv_model +
+    ' on CSE Motors" />';
+  item += '<div class="namePrice">';
+  item += "<hr />";
+  item += "<h2>";
+  item += data.inv_make + " " + data.inv_model;
+  item += "</h2>";
+  item +=
+    "<span>$" +
+    new Intl.NumberFormat("en-US").format(data.inv_price) +
+    "</span>";
+  item += "</div>";
+  item += "<ul>";
+  item += "<li><strong>Model:</strong> " + data.inv_model + "</li>";
+  item += "<li><strong>Year:</strong> " + data.inv_year + "</li>";
+  item +=
+    "<li><strong>Price:</strong> $" +
+    new Intl.NumberFormat("en-US").format(data.inv_price) +
+    "</li>";
+  item += "<li><strong>Stock:</strong> " + data.inv_stock + "</li>";
+  item += "<li><strong>Color:</strong> " + data.inv_color + "</li>";
+  item += "</ul>";
+  item += '<p class="description">' + data.inv_description + "</p>";
+  item += "</div>";
+  return item;
+};
+
+/* ***********************
  * Constructs the nav HTML unordered list
  ************************** */
 Util.getNav = async function (req, res, next) {

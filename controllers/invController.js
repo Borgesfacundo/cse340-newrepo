@@ -19,4 +19,42 @@ invCont.buildByClassificationId = async function (req, res, next) {
   });
 };
 
+/* ******************************
+ * Build a single view of an item when clicked a specific car
+ * ****************************** */
+invCont.buildItemView = async function (req, res, next) {
+  try {
+    const item_id = req.params.invId;
+    if (!item_id) {
+      return res.status(404).render("errors/error", {
+        title: "400 - bad request",
+        message: "invalid vehicle ID.",
+        nav: await utilities.getNav(),
+      });
+    }
+    const data = await invModel.getInventoryItemById(item_id);
+
+    //verify if vehicle is found
+    if (!data || data.length === 0) {
+      return res.status(404).render("errors/error", {
+        title: "404 - Not Found",
+        message: "Sorry, the vehicle you are looking for cannot be found.",
+        nav: await utilities.getNav(),
+      });
+    }
+
+    const item = await utilities.buildItemView(data[0]);
+    let nav = await utilities.getNav();
+    res.render("./inventory/item", {
+      title:
+        data[0].inv_year + " " + data[0].inv_make + " " + data[0].inv_model,
+      nav,
+      item,
+    });
+  } catch (error) {
+    console.error("Error in buildItemView: " + error);
+    next(error);
+  }
+};
+
 module.exports = invCont;
