@@ -58,36 +58,39 @@ Util.buildClassificationGrid = async function (data) {
  * Build the single item view HTML
  ************************** */
 Util.buildItemView = async function (data) {
-  let item = '<div id="item-display">';
+  let item = '<div class="indiv-vehicle-container">';
+  item += '<div id="vehicle-image">';
   item +=
     '<img src="' +
-    data.inv_thumbnail +
+    data.inv_image +
     '" alt="Image of ' +
     data.inv_make +
     " " +
     data.inv_model +
     ' on CSE Motors" />';
-  item += '<div class="namePrice">';
+  item += "</div>";
+  item += '<div class="vehicleDetails">';
   item += "<hr />";
   item += "<h2>";
-  item += data.inv_make + " " + data.inv_model;
+  item += `${data.inv_make} ${data.inv_model} Details`;
   item += "</h2>";
   item +=
-    "<span>$" +
+    "<strong>" +
+    "Price: " +
+    "$" +
     new Intl.NumberFormat("en-US").format(data.inv_price) +
-    "</span>";
-  item += "</div>";
-  item += "<ul>";
-  item += "<li><strong>Model:</strong> " + data.inv_model + "</li>";
-  item += "<li><strong>Year:</strong> " + data.inv_year + "</li>";
+    " </strong>" +
+    "<hr>";
   item +=
-    "<li><strong>Price:</strong> $" +
-    new Intl.NumberFormat("en-US").format(data.inv_price) +
-    "</li>";
-  item += "<li><strong>Stock:</strong> " + data.inv_stock + "</li>";
-  item += "<li><strong>Color:</strong> " + data.inv_color + "</li>";
-  item += "</ul>";
-  item += '<p class="description">' + data.inv_description + "</p>";
+    "<strong>Description: </strong>" +
+    '<span class="description">' +
+    data.inv_description +
+    "</span> <hr>";
+  item += "<strong>Color: </strong> " + data.inv_color + "<hr>";
+  item +=
+    "<strong>Miles: </strong> " +
+    new Intl.NumberFormat("en-US").format(data.inv_miles);
+  item += "</div>";
   item += "</div>";
   return item;
 };

@@ -30,4 +30,13 @@
     grid-row: 1/2;
     justify-items: center;
   }
+
+  /* Individual vehicle display */
+  .indiv-vehicle-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    width: 100%;
+  }
 }
