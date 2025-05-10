@@ -8,7 +8,7 @@
 #top-header {
   display: flex;
   justify-content: space-between;
-  padding-top: 1rem;
+  padding: 1rem 0;
 }
 
 .siteName a{
@@ -21,4 +21,20 @@
 #tools a{
   text-decoration: none;
   color: #000;
+}
+
+nav {
+  background-color: #0f0d0d;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+}
+
+nav ul li {
+  color: #fff;
+  padding: .7rem;
+  list-style: none;
 }
