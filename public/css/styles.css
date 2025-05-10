@@ -4,3 +4,21 @@
 *:after {
   box-sizing: border-box;
 }
+
+#top-header {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+
+.siteName a{
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+#tools a{
+  text-decoration: none;
+  color: #000;
+}
