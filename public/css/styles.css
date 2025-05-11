@@ -39,19 +39,27 @@ nav ul li {
   list-style: none;
 }
 
-#hero {
+main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
 
+#hero {
+  grid-column: 1/3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 #hero h1 {
   grid-column: 1/3;
+  grid-row: 1/2;
+  z-index: 100;
 }
 
 #hero picture {
   grid-column: 1/3;
-  grid-row: 2/3;
+  grid-row: 1/3;
 }
 
 #hero img {
@@ -101,9 +109,11 @@ nav ul li {
   background-color: #00aeff;
 }
 
-#reviews h2 {
-  margin: .5rem 0;
+#reviews {
+  grid-column: 1/3;
 }
+
+
 
 #reviews ul {
   padding: 1.1rem;
@@ -115,6 +125,7 @@ nav ul li {
 }
 
 #upgrades {
+  grid-column: 1/3;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: .8rem;
