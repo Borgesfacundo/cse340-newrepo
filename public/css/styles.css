@@ -5,10 +5,21 @@
   box-sizing: border-box;
 }
 
+body {
+  background-image: url("/images/site/small_check.jpg");
+  background-repeat: repeat; /* Repite la imagen en ambas direcciones */
+  background-position: top left; /* Asegura que la imagen comience desde la esquina superior izquierda */
+  background-size: auto; /* Mantiene el tamaño original de la imagen */
+}
+
+#wrapper {
+  background-color: #fff;
+}
+
 #top-header {
   display: flex;
   justify-content: space-between;
-  padding: 1rem 0;
+  padding: 1rem .5rem;
 }
 
 .siteName a {
@@ -113,21 +124,20 @@ main {
   grid-column: 1/3;
 }
 
-
 #reviews ul {
   padding: 1.1rem;
   margin: 0;
 }
 
 #reviews ul li {
-  padding-bottom: .5rem;
+  padding-bottom: 0.5rem;
 }
 
 #upgrades {
   grid-column: 1/3;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: .8rem;
+  gap: 0.8rem;
 }
 
 #upgrades h2 {
@@ -135,8 +145,8 @@ main {
 }
 
 #upgrades div {
- text-align: center;
-  padding-bottom: 1rem;
+  text-align: center;
+  padding: 0 1rem 1rem 1rem;
 }
 
 #upgrades div div {
@@ -145,4 +155,3 @@ main {
   border: 1px solid #000;
   height: 90%;
 }
-

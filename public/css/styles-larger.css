@@ -1,4 +1,10 @@
 @media only screen and (min-width: 500px) {
+    #wrapper {
+        margin: 1rem 4rem;
+        border-radius: 10px;
+        border: 3px solid #00aeff;
+    }
+
   h1 {
     font-size: 2rem;
   }
