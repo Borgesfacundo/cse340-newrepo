@@ -1,9 +1,19 @@
-@media only screen and (min-width: 500px) {
-    #wrapper {
-        margin: 1rem 4rem;
-        border-radius: 10px;
-        border: 3px solid #00aeff;
-    }
+@media only screen and (min-width: 550px) {
+  body {
+    margin: 0;
+    padding: 0;
+    background-image: url("/images/site/small_check.jpg");
+    background-repeat: repeat; /* Repite la imagen en ambas direcciones */
+    background-position: top left; /* Asegura que la imagen comience desde la esquina superior izquierda */
+    background-size: auto; /* Mantiene el tamaño original de la imagen */
+  }
+
+  #wrapper {
+    margin: 1rem 4rem;
+    border-radius: 10px;
+    border: 3px solid #00aeff;
+    max-width: 100%;
+  }
 
   h1 {
     font-size: 2rem;

@@ -7,13 +7,7 @@
 
 body {
     font-family: "Roboto", sans-serif;
-  background-image: url("/images/site/small_check.jpg");
-  background-repeat: repeat; /* Repite la imagen en ambas direcciones */
-  background-position: top left; /* Asegura que la imagen comience desde la esquina superior izquierda */
-  background-size: auto; /* Mantiene el tamaño original de la imagen */
 }
-
-
 
 #wrapper {
   background-color: #fff;
