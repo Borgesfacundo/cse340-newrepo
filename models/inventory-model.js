@@ -1,5 +1,4 @@
 const pool = require("../database/")
-const { get } = require("../routes/inventoryRoute")
 
 /* ***************************
  * Get all classification data
@@ -23,7 +22,6 @@ async function getClassifications(){
         return data.rows
     } catch (error) {
         console.error("getclassificationsbyid error ", error)
-        throw error
     }
    }
 
