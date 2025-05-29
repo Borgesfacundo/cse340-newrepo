@@ -6,7 +6,8 @@
 }
 
 body {
-    font-family: "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
 }
 
 #wrapper {
@@ -16,7 +17,7 @@ body {
 #top-header {
   display: flex;
   justify-content: space-between;
-  padding: 1rem .5rem;
+  padding: 1rem 0.5rem;
 }
 
 .siteName a {
@@ -63,11 +64,11 @@ main {
   grid-column: 1/3;
   grid-row: 1/2;
   z-index: 100;
-  padding: 0 .5rem;
+  padding: 0 0.5rem;
 }
 
 h2 {
-  padding: 0 .5rem;
+  padding: 0 0.5rem;
 }
 
 #hero picture {
@@ -157,4 +158,48 @@ h2 {
   padding: 1rem 1rem 0 1rem;
   border: 1px solid #000;
   height: 90%;
+}
+
+/* Inventory list styles */
+#inv-display {
+  grid-column: 1/3;
+  grid-row: 2/3;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  width: 100%;
+  max-width: 800px; /* Puedes dejarlo para limitar a 3 columnas en pantallas grandes */
+  gap: 1rem;
+  list-style: none;
+  justify-self: center;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+#inv-display li {
+  max-width: 250px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#inv-display a {
+  display: block;
+}
+
+#inv-display img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  display: block;
+}
+
+.namePrice {
+  margin-top: 0.5rem;
+}
+
+.classification-h1 {
+  grid-column: 1/3;
+  text-align: center;
 }
