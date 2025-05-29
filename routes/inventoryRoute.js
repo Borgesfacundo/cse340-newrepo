@@ -16,4 +16,7 @@ router.get(
   utilities.handleErrors(invController.buildSingleCar)
 );
 
+// Route to test error 500
+router.get("/error-test", utilities.handleErrors(invController.triggerError));
+
 module.exports = router;

@@ -35,4 +35,13 @@ invCont.buildSingleCar = async function (req, res, next) {
   });
 };
 
+/* **************************************
+ * Trigger an error for testing purposes (error 500 )
+ * *********************************** */
+invCont.triggerError = async function (req, res, next) {
+  // Error 500
+  const err = new Error("This is a test error");
+  err.status = 500;
+  throw err;
+};
 module.exports = invCont;
