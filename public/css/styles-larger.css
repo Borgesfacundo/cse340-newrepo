@@ -42,3 +42,17 @@
     grid-row: 2/3;
   }
 }
+
+/* View single vehicle style */
+.single-view-h1 {
+  grid-column: 1/2;
+}
+
+.single-view-container {
+  grid-template-columns: 1fr 1fr;
+}
+
+.car-image {
+  grid-column: 1/2;
+  align-content: center;
+}
