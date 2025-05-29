@@ -95,7 +95,10 @@ Util.buildSingleCar = async function (data) {
   grid += "</div>";
   grid += '<div class="car-details">';
   grid += `<h2> ${car.inv_make} ${car.inv_model} Details </h2>`;
-  grid += `<p><b>Price: </b> $${car.inv_price}</p>`;
+  grid +=
+    "<p><b>Price: </b> $" +
+    new Intl.NumberFormat("en-US").format(car.inv_price) +
+    "</p>";
   grid += `<p><b>Description: </b> ${car.inv_description}</p>`;
   grid += `<p><b>Color: </b> ${car.inv_color}</p>`;
   grid += `<p><b>Miles: </b> ${car.inv_miles.toLocaleString()}</p>`;
