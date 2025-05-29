@@ -48,6 +48,16 @@ nav ul li {
   list-style: none;
 }
 
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+}
+
+nav ul li :hover {
+  color: #00aeff;
+}
+
 main {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -182,6 +192,11 @@ h2 {
   display: flex;
   flex-direction: column;
   height: 100%;
+  border: 1px solid #00aeff;
+  border-radius: 5px;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: #000 0 0 5px;
 }
 
 #inv-display a {
