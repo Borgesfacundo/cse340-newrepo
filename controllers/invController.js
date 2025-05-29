@@ -24,13 +24,8 @@ invCont.buildByClassificationId = async function (req, res, next) {
  * *********************************** */
 invCont.buildSingleCar = async function (req, res, next) {
   const inv_id = req.params.inv_id;
-  const inv_model = req.params.inv_model;
-  const inv_year = req.params.inv_year;
   const data = await invModel.getSingleCar(inv_id);
   const car = data[0];
-  if (!car) {
-    return next({ status: 404, message: "Vehicle not found" });
-  }
   let nav = await utilities.getNav();
   const singleview = await utilities.buildSingleCar(data);
   res.render("./inventory/single-car", {
