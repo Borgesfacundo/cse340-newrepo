@@ -15,6 +15,7 @@ const inventoryRoute = require("./routes/inventoryRoute");
 const utilities = require("./utilities/");
 const session = require("express-session");
 const pool = require("./database/");
+const AccountRoute = require("./routes/accountRoute");
 
 /* ***********************
  * View Engine and Templates
@@ -56,6 +57,9 @@ app.use("/inv", inventoryRoute);
 
 //Index route
 app.get("/", utilities.handleErrors(baseController.buildHome));
+
+//Account routes
+app.use("/account", AccountRoute);
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
