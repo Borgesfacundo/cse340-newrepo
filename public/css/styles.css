@@ -265,3 +265,48 @@ h2 {
 footer p {
   padding: 1rem;
 }
+
+/* Login page Styles */
+form {
+  grid-column: 1/3;
+  margin: 0 auto;
+  background-color: #00aeff;
+  padding: 1rem 0.5rem;
+  border-radius: 9px;
+  min-width: 250px;
+  max-width: 700px;
+}
+
+fieldset {
+  border: 1px solid #dadada;
+  border-radius: 9px;
+}
+
+label {
+  display: block;
+  padding: 0.5rem 0;
+  font-weight: 600;
+}
+
+input {
+  display: block;
+}
+
+input[type="submit"] {
+  background-color: #000;
+  color: #fff;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form span {
+  display: block;
+}
+
+form span,
+form span a {
+  text-align: center;
+  color: #000;
+}
