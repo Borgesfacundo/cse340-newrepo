@@ -290,6 +290,12 @@ label {
 
 input {
   display: block;
+  padding: 0.3rem;
+}
+
+input[type="account_email"],
+input[type="account_password"] {
+  border-radius: 10px;
 }
 
 input[type="submit"] {
@@ -299,6 +305,12 @@ input[type="submit"] {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  border-radius: 10px;
+}
+
+input[type="submit"]:hover {
+  background-color: #fff;
+  color: #000;
 }
 
 form span {
@@ -309,4 +321,5 @@ form span,
 form span a {
   text-align: center;
   color: #000;
+  padding-top: 1rem;
 }
