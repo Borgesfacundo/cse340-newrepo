@@ -4,6 +4,8 @@
 <%- messages() %>
 
 <form method="post" action="/account/register">
+  <p id="register-requirement"><b>All fields are required.</b></p>
+
   <fieldset>
     <h2>Register</h2>
     <label
@@ -25,16 +27,16 @@
         name="account_password"
         required
         minlength="12"
-        pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{12,}$"
+        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
         title="Password must be at least 12 characters long, contain at least one uppercase letter, one digit, and one special character."
       /><span id="pswdBtn">Show Password</span></label
     >
-    <span id="pswdHint"
-      ><b
+    <div id="pswdHint">
+      <b
         >Password must be at least 12 characters long, contain at least one
         uppercase letter, one digit, and one special character.</b
-      ></span
-    >
+      >
+    </div>
     <input type="submit" value="Register" />
   </fieldset>
 </form>
