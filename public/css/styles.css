@@ -300,8 +300,8 @@ input {
   padding: 0.3rem;
 }
 
-input[type="account_email"],
-input[type="account_password"] {
+input[type="email"],
+input[type="password"] {
   border-radius: 10px;
 }
 

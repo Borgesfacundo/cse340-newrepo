@@ -1,0 +1,34 @@
+<title><%= title %></title>
+<h1><%= title %></h1>
+
+<%- messages() %>
+
+<form method="get" action="">
+  <fieldset>
+    <h2>Register</h2>
+    <label
+      >First name:
+      <input type="text" id="fname" name="account_firstname" required />
+    </label>
+    <label
+      >Last name:
+      <input type="text" id="lname" name="account_lastname" required
+    /></label>
+    <label
+      >Email: <input type="email" id="email" name="account_email" required
+    /></label>
+    <label
+      >Password:
+      <input
+        type="password"
+        id="pwd"
+        name="account_password"
+        required
+        minlength="12"
+        pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{12,}$"
+        title="Password must be at least 12 characters long, contain at least one uppercase letter, one digit, and one special character."
+      /><span id="pswdBtn">Show Password</span></label
+    >
+    <input type="submit" value="Register" />
+  </fieldset>
+</form>
