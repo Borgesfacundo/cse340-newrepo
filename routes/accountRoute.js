@@ -14,4 +14,13 @@ router.get(
   "/register",
   utilities.handleErrors(accountController.buildRegister)
 );
+
+/* ********************
+ * Handle Registration
+ ********************/
+router.post(
+  "/register",
+  utilities.handleErrors(accountController.registerAccount)
+);
+
 module.exports = router;
