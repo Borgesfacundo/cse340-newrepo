@@ -16,7 +16,7 @@ async function buildLogin(req, res, next) {
  * Deliver Registration View
  * ***************************** */
 async function buildRegister(req, res, next) {
-  let nav = utilities.getNav();
+  let nav = await utilities.getNav();
   res.render("account/register", {
     title: "Register",
     nav,
