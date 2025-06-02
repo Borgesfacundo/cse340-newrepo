@@ -306,7 +306,8 @@ input {
 }
 
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="text"] {
   border-radius: 10px;
 }
 
@@ -323,6 +324,15 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #fff;
   color: #000;
+}
+
+input:required:invalid,
+input:focus:invalid {
+  border: 3px solid #f70606;
+}
+
+input:required:valid {
+  border: 3px solid #00ff4c;
 }
 
 form span {
