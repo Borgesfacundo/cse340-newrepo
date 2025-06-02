@@ -32,6 +32,7 @@ invCont.buildSingleCar = async function (req, res, next) {
     title: `${car.inv_year} ${car.inv_make} ${car.inv_model}`,
     nav,
     singleview,
+    errors: null,
   });
 };
 
