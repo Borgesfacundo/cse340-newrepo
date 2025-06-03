@@ -43,8 +43,20 @@ async function getSingleCar(inv_id) {
   }
 }
 
+async function addClassification(classification_name) {
+  try {
+    const sql =
+      "INSERT INTO public.classification (classification_name) VALUES ($1) RETURNING *";
+    const result = await pool.query(sql, [classification_name]);
+    return result.rowCount;
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   getClassifications,
   getInventoryByClassificationId,
   getSingleCar,
+  addClassification,
 };

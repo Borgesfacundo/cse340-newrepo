@@ -45,4 +45,53 @@ invCont.triggerError = async function (req, res, next) {
   err.status = 500;
   throw err;
 };
+
+/* **************************************
+ * Build view to add classification or vehicle
+ * *********************************** */
+invCont.buildManagement = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  res.render("inventory/management", {
+    title: "Vehicle Management",
+    nav,
+  });
+};
+
+// Show the form to add a new classification
+invCont.buildAddClassification = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  res.render("inventory/add-classification", {
+    title: "Add Classification",
+    nav,
+    errors: null,
+  });
+};
+
+//Process the form to add a new classification
+invCont.processAddClassification = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  const { classification_name } = req.body;
+  try {
+    const result = await invModel.addClassification(classification_name);
+    if (result) {
+      req.flash("notice", "The new car classification was successfully added.");
+      res.redirect("/inv");
+    } else {
+      req.flash("notice", "failed to add classification.");
+      res.render("inventory/add-classification", {
+        title: "Add Classification",
+        nav,
+        errors: null,
+      });
+    }
+  } catch (error) {
+    req.flash("notice", "Error adding classification.");
+    res.render("inventory/add-classification", {
+      title: "Add Classification",
+      nav,
+      errors: null,
+    });
+  }
+};
+
 module.exports = invCont;

@@ -373,3 +373,8 @@ form span a {
   grid-column: 1/3;
   color: #f70606;
 }
+
+/* inv management Styles */
+#inventory-management {
+  grid-column: 1/3;
+}
