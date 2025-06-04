@@ -16,10 +16,13 @@
   id="addClassificationForm"
   novalidate
 >
+  <h4><i>FIELD IS REQUIRED</i></h4>
   <fieldset>
     <label for="classification_name"
       >Classification Name:
-      <div><i>NAME MUST BE ALPHABETIC CHARACTERS ONLY.</i></div>
+      <div class="input-info">
+        <i>NAME MUST BE ALPHABETIC CHARACTERS ONLY.</i>
+      </div>
       <input
         type="text"
         id="classification_name"
@@ -30,6 +33,6 @@
         value="<%- locals.classification_name %>"
       />
     </label>
-    <button type="submit">Add Classification</button>
+    <button type="submit" class="button">Add Classification</button>
   </fieldset>
 </form>

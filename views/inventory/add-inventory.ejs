@@ -42,7 +42,9 @@
   <label
     >Year:
     <input
-      type="text"
+      type="number"
+      min="1900"
+      max="2099"
       id="inv_year"
       name="inv_year"
       required
@@ -50,15 +52,13 @@
     />
   </label>
 
-  <label
-    >Description:
-    <textarea
-      id="inv_description"
-      name="inv_description"
-      required
-      value="<%- locals.inv_description  %>"
-    ></textarea>
+  <label>
+    Description:
+    <textarea id="inv_description" name="inv_description" required>
+<%= typeof inv_description !== 'undefined' ? inv_description : '' %></textarea
+    >
   </label>
+
   <label
     >Image Path:
     <input
@@ -112,5 +112,5 @@
       value="<%- locals.inv_color %>"
     />
   </label>
-  <button type="submit">Add Inventory</button>
+  <button type="submit" class="button">Add Inventory</button>
 </form>
