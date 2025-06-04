@@ -37,4 +37,18 @@ router.post(
   utilities.handleErrors(invController.processAddClassification)
 );
 
+// Show the form to add a new vehicle
+router.get(
+  "/add-inventory",
+  utilities.handleErrors(invController.buildAddInventory)
+);
+
+// Process the form to add a new vehicle
+router.post(
+  "/add-inventory",
+  invValidate.inventoryRules(),
+  invValidate.checkInventoryData,
+  utilities.handleErrors(invController.processAddInventory)
+);
+
 module.exports = router;
