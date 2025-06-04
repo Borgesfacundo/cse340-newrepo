@@ -51,4 +51,10 @@ router.post(
   utilities.handleErrors(invController.processAddInventory)
 );
 
+// Show the form to edit a vehicle
+router.get(
+  "/getInventory/:classification_id",
+  utilities.handleErrors(invController.getInventoryJSON)
+);
+
 module.exports = router;
