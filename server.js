@@ -55,6 +55,10 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 app.use(cookieParser()); // for parsing cookies
 
+// Middleware to check JWT token
+// This should be after the account routes so that it can access the account data
+app.use(utilities.checkJWTToken);
+
 /* ***********************
  * Routes
  *************************/
