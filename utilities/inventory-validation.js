@@ -65,6 +65,7 @@ validate.checkInventoryData = async (req, res, next) => {
       nav,
       classificationList,
       errors,
+      ...req.body, // to retain form data
     });
     return;
   }
