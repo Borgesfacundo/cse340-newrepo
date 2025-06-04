@@ -163,4 +163,16 @@ Util.checkJWTToken = (req, res, next) => {
   }
 };
 
+/* **************************************
+ * Middleware to check if user is logged in
+ * ************************************ */
+Util.checkLogin = (req, res, next) => {
+  if (res.locals.loggedIn) {
+    next();
+  } else {
+    req.flash("notice", "Please log in.");
+    return res.redirect("/account/login");
+  }
+};
+
 module.exports = Util;

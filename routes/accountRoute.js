@@ -19,7 +19,11 @@ router.get(
 /* ********************
  * Deliver Login View
  ********************/
-router.get("/", accountController.buildAccountManagement);
+router.get(
+  "/",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildAccountManagement)
+);
 
 /* ********************
  * Handle Registration
