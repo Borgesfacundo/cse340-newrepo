@@ -17,6 +17,7 @@ const session = require("express-session");
 const pool = require("./database/");
 const AccountRoute = require("./routes/accountRoute");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 /* ***********************
  * View Engine and Templates
@@ -51,6 +52,8 @@ app.use(function (req, res, next) {
 // Body Parser Middleware
 app.use(bodyParser.json()); //Tell express to parse JSON data
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+app.use(cookieParser()); // for parsing cookies
 
 /* ***********************
  * Routes

@@ -17,6 +17,11 @@ router.get(
 );
 
 /* ********************
+ * Deliver Login View
+ ********************/
+router.get("/", accountController.buildAccountManagement);
+
+/* ********************
  * Handle Registration
  ********************/
 router.post(
@@ -32,9 +37,7 @@ router.post(
   "/login",
   regValidate.loginRules(),
   regValidate.checkLoginData,
-  (req, res) => {
-    res.status(200).send("login process");
-  }
+  utilities.handleErrors(accountController.accountLogin)
 );
 
 module.exports = router;
