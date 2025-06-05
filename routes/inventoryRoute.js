@@ -57,4 +57,10 @@ router.get(
   utilities.handleErrors(invController.getInventoryJSON)
 );
 
+// show the form to edit a vehicle
+router.get(
+  "/edit/:inv_id",
+  utilities.handleErrors(invController.buildEditInventory)
+);
+
 module.exports = router;
