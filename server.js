@@ -49,6 +49,18 @@ app.use(function (req, res, next) {
   next();
 });
 
+/* ************************************
+ * Middleware to make session variables available
+ * in all views (for header,etc)
+ * This allows EJS templates to check if a user is
+ * logged in and display info
+ ************************************** */
+app.use((req, res, next) => {
+  res.locals.loggedin = req.session.loggedin || false;
+  res.locals.accountFirstName = req.session.account_firstname || "";
+  next();
+});
+
 // Body Parser Middleware
 app.use(bodyParser.json()); //Tell express to parse JSON data
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded

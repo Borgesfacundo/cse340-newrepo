@@ -175,4 +175,16 @@ Util.checkLogin = (req, res, next) => {
   }
 };
 
+/* *****************************
+ * Middleware to check account type
+ * ***************************** */
+Util.checkAccountType = (req, res, next) => {
+  const type = req.session.account_type;
+  if (type === "Employee" || type === "Admin") {
+    return next();
+  }
+  req.flash("notice", "You must be an employer or admin to access this page.");
+  return res.redirect("/account/login");
+};
+
 module.exports = Util;

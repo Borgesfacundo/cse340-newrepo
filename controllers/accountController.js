@@ -116,6 +116,11 @@ async function accountLogin(req, res) {
           maxAge: 3600 * 1000,
         });
       }
+      // Saving loggedin and accountFirstName variables
+      req.session.loggedin = true;
+      req.session.account_firstname = accountData.account_firstname;
+      req.session.account_type = accountData.account_type;
+      req.session.account_id = accountData.account_id;
       return res.redirect("/account/");
     } else {
       req.flash(
@@ -140,6 +145,9 @@ async function buildAccountManagement(req, res) {
     title: "Account Management",
     nav,
     errors: null,
+    accountFirstName: req.session.account_firstname,
+    accountType: req.session.account_type,
+    accountId: req.session.account_id,
   });
 }
 

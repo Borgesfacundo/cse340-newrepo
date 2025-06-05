@@ -9,3 +9,16 @@
 </ul>
 <% } %>
 <p>You're logged in.</p>
+
+<h2>Welcome <%- accountFirstName %></h2>
+
+<p id="update-acc-info">
+  <a href="/account/update/<%= accountId %>">Update Account Information</a>
+</p>
+
+<% if (accountType === "Employee" || accountType === "Admin") { %>
+<h3 id="inv-management-h3">Inventory Management</h3>
+<p>
+  <a href="/inv/">Go to Inventory Management</a>
+</p>
+<% } %>
