@@ -71,4 +71,13 @@ router.post(
   utilities.handleErrors(invController.updateInventory)
 );
 
+// Show the form to delete a vehicle
+router.get(
+  "/delete/:inv_id",
+  utilities.handleErrors(invController.buildDeleteInventory)
+);
+
+// Process the form to delete a vehicle
+router.post("/delete", utilities.handleErrors(invController.deleteInventory));
+
 module.exports = router;

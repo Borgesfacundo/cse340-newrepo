@@ -1,0 +1,65 @@
+<h1><%- title %></h1>
+
+<%- messages() %> <% if (errors) { %>
+<ul class="notice">
+  <% errors.array().forEach(error => { %>
+  <li><%= error.msg %></li>
+  <% }) %>
+</ul>
+<% } %>
+
+<form action="/inv/delete" method="post" id="deleteForm" novalidate>
+  <label>Classification:</label>
+  <%- classificationList %>
+  <label
+    >Make:
+    <input
+      type="text"
+      id="inv_make"
+      name="inv_make"
+      required
+      value="<%- inv_make %>"
+      readonly
+    />
+  </label>
+  <label
+    >Model:
+    <input
+      type="text"
+      id="inv_model"
+      name="inv_model"
+      required
+      value="<%- inv_model %>"
+      readonly
+    />
+  </label>
+  <label
+    >Year:
+    <input
+      type="number"
+      min="1900"
+      max="2099"
+      id="inv_year"
+      name="inv_year"
+      required
+      value="<%- inv_year %>"
+      readonly
+    />
+  </label>
+  <label
+    >Price:
+    <input
+      type="number"
+      id="inv_price"
+      name="inv_price"
+      min="0"
+      step="0.01"
+      required
+      value="<%- inv_price %>"
+      readonly
+    />
+  </label>
+  <button type="submit" class="Submit">Delete Vehicle</button>
+  <p class="conf-deletion">Confirm Deletion - The delete is permanent.</p>
+  <input type="hidden" name="inv_id" value="<%- inv_id %>" />
+</form>
