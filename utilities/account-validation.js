@@ -135,4 +135,83 @@ validate.checkLoginData = async (req, res, next) => {
   next();
 };
 
+validate.updateRules = () => [
+  body("account_firstname")
+    .trim()
+    .notEmpty()
+    .withMessage("First name is required."),
+  body("account_lastname")
+    .trim()
+    .notEmpty()
+    .withMessage("Last name is required."),
+  body("account_email")
+    .trim()
+    .isEmail()
+    .withMessage("A valid email is required.")
+    .custom(async (account_email, { req }) => {
+      // Get email via user id
+      const account = await accountModel.getAccountById(req.body.account_id);
+      if (account && account_email !== account.account_email) {
+        const exists = await accountModel.checkExistingEmail(account_email);
+        if (exists > 0) {
+          throw new Error("Email exists. Use a different email.");
+        }
+      }
+    }),
+];
+
+validate.checkUpdateData = async (req, res, next) => {
+  const { account_firstname, account_lastname, account_email, account_id } =
+    req.body;
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    res.render("account/update", {
+      errors,
+      title: "Update Account",
+      nav,
+      account_firstname,
+      account_lastname,
+      account_email,
+      account_id,
+    });
+    return;
+  }
+  next();
+};
+
+validate.passwordRules = () => [
+  body("account_password")
+    .trim()
+    .notEmpty()
+    .isStrongPassword({
+      minLength: 12,
+      minLowercase: 1,
+      minUppercase: 1,
+      minNumbers: 1,
+      minSymbols: 1,
+    })
+    .withMessage("Password does not meet requirements."),
+];
+
+validate.checkPasswordData = async (req, res, next) => {
+  const { account_id } = req.body;
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    // Trae los datos actuales para el formulario sticky
+    const accountData = await accountModel.getAccountById(account_id);
+    let nav = await utilities.getNav();
+    return res.render("account/update", {
+      errors,
+      title: "Update Account",
+      nav,
+      account_firstname: accountData.account_firstname,
+      account_lastname: accountData.account_lastname,
+      account_email: accountData.account_email,
+      account_id: accountData.account_id,
+    });
+  }
+  next();
+};
+
 module.exports = validate;

@@ -3,6 +3,7 @@ const accountModel = require("../models/account-model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const { validationResult } = require("express-validator");
 
 /* *******************************
  * Deliver Login View
@@ -139,6 +140,9 @@ async function accountLogin(req, res) {
   }
 }
 
+/* ********************************
+ * Deliver build account view
+ ********************************** */
 async function buildAccountManagement(req, res) {
   let nav = await utilities.getNav();
   res.render("account/management", {
@@ -151,10 +155,121 @@ async function buildAccountManagement(req, res) {
   });
 }
 
+/* ********************************
+ * Deliver update account view
+ ********************************** */
+async function buildUpdateAccount(req, res) {
+  let nav = await utilities.getNav();
+  const account_id = req.params.account_id;
+  // Get user info from the model
+  const accountData = await accountModel.getAccountById(account_id);
+  res.render("account/update", {
+    title: "Update Account",
+    nav,
+    account_firstname: accountData.account_firstname,
+    account_lastname: accountData.account_lastname,
+    account_email: accountData.account_email,
+    account_id: accountData.account_id,
+    errors: null,
+  });
+}
+
+/* *****************************
+ * Process update request
+ ******************************** */
+async function updateAccount(req, res) {
+  let nav = await utilities.getNav();
+  const { account_id, account_firstname, account_lastname, account_email } =
+    req.body;
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.render("account/update", {
+      title: "Update Account",
+      nav,
+      account_firstname,
+      account_lastname,
+      account_email,
+      account_id,
+      errors,
+    });
+  }
+
+  // update database info
+  const updateResult = await accountModel.updateAccount(
+    account_id,
+    account_firstname,
+    account_lastname,
+    account_email
+  );
+
+  if (updateResult) {
+    req.flash("notice", "Account updated successfully.");
+    // Update session info
+    req.session.account_firstname = account_firstname;
+    req.session.account_email = account_email;
+  } else {
+    req.flash("notice", "Account updated failed.");
+  }
+
+  return res.redirect("/account/");
+}
+
+async function updatePassword(req, res) {
+  let nav = await utilities.getNav();
+  const { account_id, account_password } = req.body;
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const accountData = await accountModel.getAccountById(account_id);
+    return res.render("account/update", {
+      title: "Update Account",
+      nav,
+      account_firstname: accountData.account_firstname,
+      account_lastname: accountData.account_lastname,
+      account_email: accountData.account_email,
+      account_id: accountData.account_id,
+      errors,
+    });
+  }
+  //Hashing new password
+  const hashedPassword = await bcrypt.hash(account_password, 10);
+  const updateResult = await accountModel.updatePassword(
+    account_id,
+    hashedPassword
+  );
+
+  if (updateResult) {
+    req.flash("notice", "Password updated successfully.");
+  } else {
+    req.flash("notice", "Password update failed.");
+  }
+
+  return res.redirect("/account/");
+}
+
+/* *****************************
+ * Logout process
+ ******************************** */
+async function accountLogout(req, res) {
+  // Destroy session
+  req.session.destroy(() => {
+    // Delete jwt token
+    res.clearCookie("jwt");
+    // delete cookie session
+    res.clearCookie("sessionId");
+    // redirect to home
+    res.redirect("/");
+  });
+}
+
 module.exports = {
   buildLogin,
   buildRegister,
   registerAccount,
   accountLogin,
   buildAccountManagement,
+  buildUpdateAccount,
+  updateAccount,
+  updatePassword,
+  accountLogout,
 };
