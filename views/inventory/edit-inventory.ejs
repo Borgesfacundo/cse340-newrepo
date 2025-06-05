@@ -8,7 +8,7 @@
 </ul>
 <% } %>
 
-<form action="/inv/update" method="post" id="editingInventoryForm" novalidate>
+<form action="/inv/update" method="post" id="updateForm" novalidate>
   <label>Classification:</label>
   <%- classificationList %>
 
@@ -107,5 +107,8 @@
       value="<%- inv_color %>"
     />
   </label>
-  <button type="submit" class="Submit">Update Vehicle</button>
+  <button type="submit" class="Submit" disabled>Update Vehicle</button>
+  <input type="hidden" name="inv_id" value="<%- inv_id %>" />
 </form>
+
+<script src="../../js/inv-update.js"></script>

@@ -63,4 +63,12 @@ router.get(
   utilities.handleErrors(invController.buildEditInventory)
 );
 
+// Process the form to update a vehicle
+router.post(
+  "/update/",
+  invValidate.inventoryRules(),
+  invValidate.checkUpdateData,
+  utilities.handleErrors(invController.updateInventory)
+);
+
 module.exports = router;

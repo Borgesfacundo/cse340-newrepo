@@ -52,6 +52,7 @@ validate.inventoryRules = () => [
   body("inv_color").trim().notEmpty().withMessage("Color is required."),
 ];
 
+//Errors will be redirected back to add view
 validate.checkInventoryData = async (req, res, next) => {
   const errors = validationResult(req);
   let nav = await require("../utilities/").getNav();
@@ -65,6 +66,29 @@ validate.checkInventoryData = async (req, res, next) => {
       nav,
       classificationList,
       errors,
+      ...req.body, // to retain form data
+    });
+    return;
+  }
+  next();
+};
+
+//Errors will be redirected back to edit view
+validate.checkUpdateData = async (req, res, next) => {
+  const errors = validationResult(req);
+  let nav = await require("../utilities/").getNav();
+  const itemName = `${req.body.inv_make} ${req.body.inv_model}`;
+  let classificationList =
+    await require("../utilities/").buildClassificationList(
+      req.body.classification_id
+    );
+  if (!errors.isEmpty()) {
+    res.render("inventory/edit-inventory", {
+      title: "Edit " + itemName,
+      nav,
+      classificationList,
+      errors,
+      inv_id: req.body.inv_id,
       ...req.body, // to retain form data
     });
     return;
