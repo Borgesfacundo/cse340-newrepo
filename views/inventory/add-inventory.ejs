@@ -8,12 +8,7 @@
 </ul>
 <% } %>
 
-<form
-  action="/inv/add-inventory"
-  method="post"
-  id="addInventoryForm"
-  novalidate
->
+<form action="/inv/add-inventory" method="post" id="addInventoryForm">
   <label>Classification:</label>
   <%- classificationList %>
 
@@ -79,6 +74,7 @@
       name="inv_image"
       required
       pattern=".*\.(jpg|jpeg|png|gif)$"
+      title="Image path must end with .jpg, .jpeg, .png, or .gif"
       value="<%- locals.inv_image %>"
     />
   </label>
@@ -90,6 +86,7 @@
       name="inv_thumbnail"
       required
       pattern=".*\.(jpg|jpeg|png|gif)$"
+      title="Thumbnail path must end with .jpg, .jpeg, .png, or .gif"
       value="<%- locals.inv_thumbnail %>"
     />
   </label>
