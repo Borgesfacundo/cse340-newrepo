@@ -4,6 +4,7 @@ const router = new express.Router();
 const invController = require("../controllers/invController");
 const utilities = require("../utilities/");
 const invValidate = require("../utilities/inventory-validation");
+const repairController = require("../controllers/repairController");
 
 // Route to build inventory by classification view
 router.get(
@@ -79,5 +80,14 @@ router.get(
 
 // Process the form to delete a vehicle
 router.post("/delete", utilities.handleErrors(invController.deleteInventory));
+
+// Show repairs for a vehicle
+router.get(
+  "/repairs/:inv_id",
+  utilities.handleErrors(repairController.showRepairs)
+);
+
+// Add a repair for a vehicle
+router.post("/repairs/add", utilities.handleErrors(repairController.addRepair));
 
 module.exports = router;
