@@ -30,7 +30,7 @@ async function addRepair(req, res) {
     repair_cost,
     repair_performed_by
   );
-  res.redirect(`/inventorory/repairs/${inv_id}`);
+  res.redirect(`/inventory/repairs/${inv_id}`);
 }
 
-modules.exports = { showRepairs, addRepair };
+module.exports = { showRepairs, addRepair };
