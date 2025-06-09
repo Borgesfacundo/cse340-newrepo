@@ -105,7 +105,7 @@ Util.buildSingleCar = async function (data) {
   grid += `<p><b>Color: </b> ${car.inv_color}</p>`;
   grid += `<p><b>Miles: </b> ${car.inv_miles.toLocaleString()}</p>`;
   //Add link to repair details
-  grid += `<a href="/inventory/repairs/${car.inv_id}" class="repair-link">View Repair History</a>`;
+  grid += `<a href="/inv/repairs/${car.inv_id}" class="repair-link">View Repair History</a>`;
   grid += "</div>";
   grid += "</div>";
   return grid;

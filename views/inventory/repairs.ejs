@@ -1,9 +1,9 @@
 <h1>Repairs for vehicle <%= inv_id %></h1>
 
-<a href="/inventory/detail/<%= inv_id %>">← Back to Vehicle Details</a>
+<a href="/inv/detail/<%= inv_id %>">← Back to Vehicle Details</a>
 
 <h2>Add a Repair</h2>
-<form action="/inventory/repairs/add" method="post" id="addRepairForm">
+<form action="/inv/repairs/add" method="post" id="addRepairForm">
   <input type="hidden" name="inv_id" value="<%= inv_id %>" />
   <label
     >Date:
@@ -30,9 +30,11 @@
   <li>No repairs recorded for this vehicle.</li>
   <% } else { %> <% repairs.forEach(r => { %>
   <li>
-    <strong><%= r.repair_date.toISOString().slice(0,10) %></strong>: <%=
-    r.repair_description %> ($<%= r.repair_cost %>) by <%= r.repair_performed_by
-    %>
+    <strong
+      ><%= r.repair_date ? new Date(r.repair_date).toISOString().slice(0,10) :
+      "No Date" %></strong
+    >: <%= r.repair_description %> ($<%= r.repair_cost %>) by <%=
+    r.repair_performed_by %>
   </li>
   <% }) %> <% } %>
 </ul>
