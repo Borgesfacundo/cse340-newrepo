@@ -1,0 +1,38 @@
+<h1>Repairs for vehicle <%= inv_id %></h1>
+
+<a href="/inventory/detail/<%= inv_id %>">← Back to Vehicle Details</a>
+
+<h2>Add a Repair</h2>
+<form action="/inventory/repairs/add" method="post" id="addRepairForm">
+  <input type="hidden" name="inv_id" value="<%= inv_id %>" />
+  <label
+    >Date:
+    <input type="date" name="repair_date" required />
+  </label>
+  <label>
+    Description:
+    <input type="text" name="repair_description" required maxlength="255" />
+  </label>
+  <label>
+    Cost:
+    <input type="number" name="repair_cost" min="0" step="0.01" required />
+  </label>
+  <label>
+    Performed By:
+    <input type="text" name="repair_performed_by" required maxlength="50" />
+  </label>
+  <button type="submit">Add Repair</button>
+</form>
+
+<h2>Repair History</h2>
+<ul>
+  <% if (repairs.length === 0) { %>
+  <li>No repairs recorded for this vehicle.</li>
+  <% } else { %> <% repairs.forEach(r => { %>
+  <li>
+    <strong><%= r.repair_date.toISOString().slice(0,10) %></strong>: <%=
+    r.repair_description %> ($<%= r.repair_cost %>) by <%= r.repair_performed_by
+    %>
+  </li>
+  <% }) %> <% } %>
+</ul>
