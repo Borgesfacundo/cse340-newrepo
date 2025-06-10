@@ -3,23 +3,57 @@
 <a href="/inv/detail/<%= inv_id %>">← Back to Vehicle Details</a>
 
 <h2>Add a Repair</h2>
+
+<% if (typeof errors !== "undefined" && errors.array && errors.array().length >
+0) { %>
+<ul class="notice">
+  <% errors.array().forEach(error => { %>
+  <li><%= error.msg %></li>
+  <% }) %>
+</ul>
+<% } %>
+
 <form action="/inv/repairs/add" method="post" id="addRepairForm">
-  <input type="hidden" name="inv_id" value="<%= inv_id %>" />
+  <input type="hidden" name="inv_id" value="<%= locals.inv_id %>" />
   <label
     >Date:
-    <input type="date" name="repair_date" required />
+    <input
+      type="date"
+      name="repair_date"
+      required
+      value="<%= locals.repair_date %>"
+    />
   </label>
   <label>
     Description:
-    <input type="text" name="repair_description" required maxlength="255" />
+    <input
+      type="text"
+      name="repair_description"
+      required
+      maxlength="255"
+      value="<%= locals.repair_description %>"
+    />
   </label>
   <label>
     Cost:
-    <input type="number" name="repair_cost" min="0" step="0.01" required />
+    <input
+      type="number"
+      name="repair_cost"
+      min="0"
+      step="0.01"
+      required
+      value="<%= locals.repair_cost %>"
+    />
   </label>
   <label>
     Performed By:
-    <input type="text" name="repair_performed_by" required maxlength="50" />
+    <input
+      type="text"
+      name="repair_performed_by"
+      required
+      maxlength="50"
+      value="<%= locals.repair_performed_by %>"
+    />
   </label>
   <button type="submit">Add Repair</button>
 </form>

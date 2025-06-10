@@ -5,6 +5,7 @@ const invController = require("../controllers/invController");
 const utilities = require("../utilities/");
 const invValidate = require("../utilities/inventory-validation");
 const repairController = require("../controllers/repairController");
+const repairValidate = require("../utilities/repair-validation");
 
 // Route to build inventory by classification view
 router.get(
@@ -88,6 +89,11 @@ router.get(
 );
 
 // Add a repair for a vehicle
-router.post("/repairs/add", utilities.handleErrors(repairController.addRepair));
+router.post(
+  "/repairs/add",
+  repairValidate.repairRules(),
+  repairValidate.checkRepairData,
+  utilities.handleErrors(repairController.addRepair)
+);
 
 module.exports = router;
